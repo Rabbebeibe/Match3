@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &300053898
+--- !u!1 &24624382
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,8 +131,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 300053900}
-  - component: {fileID: 300053899}
+  - component: {fileID: 24624384}
+  - component: {fileID: 24624383}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -140,31 +140,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &300053899
+--- !u!114 &24624383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300053898}
+  m_GameObject: {fileID: 24624382}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 360b26ea421249a41916a57d86f3f7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  widht: 4
+  widht: 7
   height: 7
-  tilePrefab: {fileID: 7511575982486630487, guid: 4c2221d007984e445a9c467ad8080b8e, type: 3}
---- !u!4 &300053900
+  tilePrefab: {fileID: 845299788296687020, guid: ee00b0e8516815341ad90b9e11c6ccfb, type: 3}
+  dots:
+  - {fileID: 7617511132645986024, guid: 3e58ec0eb676f2444a096bca2a6b29ec, type: 3}
+  - {fileID: 7511575982486630487, guid: 4c2221d007984e445a9c467ad8080b8e, type: 3}
+  - {fileID: 8396297789053634087, guid: f1b781c18905e2d48932bd8680d0c6d8, type: 3}
+  - {fileID: 9082484494994565953, guid: 8a2bf07dfa6171f4aacd013f49af646e, type: 3}
+  - {fileID: 2254236938516764690, guid: ec989df88971d994a87ba2cc08da72c7, type: 3}
+  - {fileID: 7204684749850904979, guid: 00b1bf8b2e40a59438cf1ff26bbdad36, type: 3}
+  - {fileID: 1218474334579824794, guid: 95fe620315306ae4d9789494081825a8, type: 3}
+  - {fileID: 8719054709992886591, guid: ba94901157804e346af1baa5790e80d2, type: 3}
+--- !u!4 &24624384
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300053898}
+  m_GameObject: {fileID: 24624382}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.23, y: -1.68, z: 0.042566225}
+  m_LocalPosition: {x: 3.00887, y: 3.6488612, z: 0.011063547}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -267,4 +276,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2138276971}
-  - {fileID: 300053900}
+  - {fileID: 24624384}
