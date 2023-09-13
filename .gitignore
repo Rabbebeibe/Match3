@@ -50,3 +50,15 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+Library/ArtifactDB
+Library/Bee/1900b0aE.dag.json
+Library/Bee/fullprofile.json
+Library/PackageManager/ProjectCache
+Library/Search/transactions.db
+Library/SourceAssetDB
+Logs/AssetImportWorker0.log
+Logs/AssetImportWorker1.log
+Temp/FSTimeGet-351b228490add7e4eaebb19d18e9f50d
+Temp/FSTimeGet-632a04ff9339e7b4c9ac19182b3660c7
+Temp/FSTimeGet-d0fefbaccb0c95b42a18e2b32d8dde3a
+Temp/UnityLockfile
