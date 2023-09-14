@@ -391,6 +391,7 @@
 -analyzer:"L:/Unity Hub/2022.3.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/BackGround.cs"
 "Assets/Scripts/Board.cs"
+"Assets/Scripts/FindMatches.cs"
 "Assets/Scripts/Piece.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0

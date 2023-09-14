@@ -152,8 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360b26ea421249a41916a57d86f3f7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  widht: 7
-  height: 7
+  currentState: 1
+  widht: 8
+  height: 6
+  offSet: 20
   tilePrefab: {fileID: 845299788296687020, guid: ee00b0e8516815341ad90b9e11c6ccfb, type: 3}
   dots:
   - {fileID: 7617511132645986024, guid: 3e58ec0eb676f2444a096bca2a6b29ec, type: 3}
@@ -164,6 +166,7 @@ MonoBehaviour:
   - {fileID: 7204684749850904979, guid: 00b1bf8b2e40a59438cf1ff26bbdad36, type: 3}
   - {fileID: 1218474334579824794, guid: 95fe620315306ae4d9789494081825a8, type: 3}
   - {fileID: 8719054709992886591, guid: ba94901157804e346af1baa5790e80d2, type: 3}
+  currentPiece: {fileID: 0}
 --- !u!4 &24624384
 Transform:
   m_ObjectHideFlags: 0
@@ -172,8 +175,53 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24624382}
   serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.2, y: 0, z: 0.01659532}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &29081188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29081190}
+  - component: {fileID: 29081189}
+  m_Layer: 0
+  m_Name: MatchFinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &29081189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29081188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22ab4ab0dcdae64187744a1c5e843ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMatches: []
+--- !u!4 &29081190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29081188}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.00887, y: 3.6488612, z: 0.011063547}
+  m_LocalPosition: {x: -0.07, y: 0.48, z: 0.2155711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -277,3 +325,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 2138276971}
   - {fileID: 24624384}
+  - {fileID: 29081190}

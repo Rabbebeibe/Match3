@@ -61,6 +61,7 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\BackGround.cs" />
     <Compile Include="Assets\Scripts\Board.cs" />
+    <Compile Include="Assets\Scripts\FindMatches.cs" />
     <Compile Include="Assets\Scripts\Piece.cs" />
   </ItemGroup>
   <ItemGroup>
