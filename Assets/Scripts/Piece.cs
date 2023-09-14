@@ -45,7 +45,11 @@ public class Piece : MonoBehaviour
         if(Mathf.Abs(targetX - transform.position.x) > .1) //move towards target
         {
             tempPos = new Vector2(targetX, transform.position.y);
-            transform.position = Vector2.Lerp(transform.position, tempPos, .4f);
+            transform.position = Vector2.Lerp(transform.position, tempPos, .6f);
+            if(board.allDots[column, row] != this.gameObject)
+            {
+                board.allDots[column, row] = this.gameObject;
+            }
         }
         else
         {
@@ -56,13 +60,16 @@ public class Piece : MonoBehaviour
         if (Mathf.Abs(targetY - transform.position.y) > .1) //move towards target
         {
             tempPos = new Vector2(transform.position.x, targetY);
-            transform.position = Vector2.Lerp(transform.position, tempPos, .4f);
+            transform.position = Vector2.Lerp(transform.position, tempPos, .6f);
+            if (board.allDots[column, row] != this.gameObject)
+            {
+                board.allDots[column, row] = this.gameObject;
+            }
         }
         else
         {
             tempPos = new Vector2(transform.position.x, targetY);
             transform.position = tempPos;
-            board.allDots[column, row] = this.gameObject;
         }
     }
 
@@ -141,15 +148,14 @@ public class Piece : MonoBehaviour
         {
             GameObject leftPiece1 = board.allDots[column - 1, row];
             GameObject rightPiece1 = board.allDots[column + 1, row];
-            if(leftPiece1 !=null && rightPiece1 != null)
+            if (leftPiece1 != null && rightPiece1 != null)
             {
-
-            }
-            if (leftPiece1.tag == this.gameObject.tag && rightPiece1.tag == this.gameObject.tag)
-            {
-                leftPiece1.GetComponent<Piece>().isMatched = true;
-                rightPiece1.GetComponent<Piece>().isMatched = true;
-                isMatched = true;
+                if (this.gameObject.CompareTag(leftPiece1.tag) && this.gameObject.CompareTag(rightPiece1.tag))
+                {
+                    leftPiece1.GetComponent<Piece>().isMatched = true;
+                    rightPiece1.GetComponent<Piece>().isMatched = true;
+                    isMatched = true;
+                }
             }
         }
         if (row > 0 && row < board.height - 1)
@@ -158,13 +164,12 @@ public class Piece : MonoBehaviour
             GameObject downPiece1 = board.allDots[column, row - 1];
             if (upPiece1 != null && downPiece1 != null)
             {
-
-            }
-            if (upPiece1.tag == this.gameObject.tag && downPiece1.tag == this.gameObject.tag)
-            {
-                upPiece1.GetComponent<Piece>().isMatched = true;
-                downPiece1.GetComponent<Piece>().isMatched = true;
-                isMatched = true;
+                if (this.gameObject.CompareTag(upPiece1.tag) && this.gameObject.CompareTag(downPiece1.tag))
+                {
+                    upPiece1.GetComponent<Piece>().isMatched = true;
+                    downPiece1.GetComponent<Piece>().isMatched = true;
+                    isMatched = true;
+                }
             }
         }
     }

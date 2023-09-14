@@ -144,3 +144,9 @@ Logs/AssetImportWorker8-prev.log
 Logs/AssetImportWorker8.log
 Logs/AssetImportWorker9-prev.log
 Logs/shadercompiler-UnityShaderCompiler.exe0.log
+*.backup
+Temp/FSTimeGet-3ab6f67567a615b4aa5d7e773f84065a
+Temp/FSTimeGet-63e5a7185b4943a418da402e1018c9d7
+Temp/FSTimeGet-a61e969d13172644781c78921f358ddc
+Temp/FSTimeGet-ece600f899bd1b94da41f3050ff57ebb
+Temp/workerlic
