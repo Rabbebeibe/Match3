@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - Board
     - CamerScaler
     - FindMatches
+    - HintManager
     - Piece
     - ScoreManager
     Unity.2D.Animation.Editor.dll:
@@ -131,6 +132,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 31128}
     - Class: 114
       Script: {instanceID: 33708}
+    - Class: 114
+      Script: {instanceID: 35144}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -138,6 +141,10 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
@@ -1274,7 +1281,7 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerExit2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: e71d1f4a22425d5b9fcfda22e39081a2
+      Hash: b4e79c10a0f3399ffb638e6cd2dbad73
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Board
@@ -1302,7 +1309,13 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: ScoreManager
+  - hash:
+      serializedVersion: 2
+      Hash: 868be423531a95ebe630779f2f7e9ada
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: HintManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/Main.unity
-  playerPath: L:/UnityMatch3/Match3.exe
+  playerPath: L:/Build/Match3.exe

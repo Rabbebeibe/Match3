@@ -18,6 +18,7 @@ public class Board : MonoBehaviour
     private BackGround[,] allTiles;
     private FindMatches findMatches;
     public GameObject[] dots;
+    public GameObject destroyEffet;
     public GameObject[,] allDots;
     public Piece currentPiece;
     public int basePieceValue = 20;
@@ -195,6 +196,8 @@ public class Board : MonoBehaviour
             {
                 CheckToMakebombs();
             }
+            GameObject particle = Instantiate(destroyEffet, allDots[column, row].transform.position, Quaternion.identity);
+            Destroy(particle, .5f);
             Destroy(allDots[column, row]);
             scoreManager.IncreaseScore(basePieceValue * streakValue);
             allDots[column, row] = null;
@@ -339,7 +342,7 @@ public class Board : MonoBehaviour
         }
         return false;
     }
-    private bool SwitchAndCheck(int column, int row, Vector2 direction)
+    public bool SwitchAndCheck(int column, int row, Vector2 direction)
     {
         SwitchPieces(column, row, direction);
         if(CheckForMatches())

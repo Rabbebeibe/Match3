@@ -325,6 +325,7 @@
 "Assets/Scripts/Board.cs"
 "Assets/Scripts/CamerScaler.cs"
 "Assets/Scripts/FindMatches.cs"
+"Assets/Scripts/HintManager.cs"
 "Assets/Scripts/Piece.cs"
 "Assets/Scripts/ScoreManager.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"

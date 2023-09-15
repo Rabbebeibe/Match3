@@ -13,6 +13,7 @@ public class Piece : MonoBehaviour
     public int targetY;
     public bool isMatched = false;
 
+    private HintManager hintManager;
     private FindMatches findMatches;
     public GameObject otherPiece;
     private Board board;
@@ -42,6 +43,7 @@ public class Piece : MonoBehaviour
 
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
+        hintManager = FindObjectOfType<HintManager>();
         //targetX = (int)transform.position.x;
         //targetY = (int)transform.position.y;
         //row = targetY;
@@ -137,6 +139,10 @@ public class Piece : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if(hintManager != null)
+        {
+            hintManager.DestroyHint();
+        }
         if(board.currentState == GameState.move)
         {
             firstTouchPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);

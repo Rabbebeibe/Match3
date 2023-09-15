@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 24624384}
   - component: {fileID: 24624383}
+  - component: {fileID: 24624385}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -166,6 +167,7 @@ MonoBehaviour:
   - {fileID: 7511575982486630487, guid: 4c2221d007984e445a9c467ad8080b8e, type: 3}
   - {fileID: 8396297789053634087, guid: f1b781c18905e2d48932bd8680d0c6d8, type: 3}
   - {fileID: 9082484494994565953, guid: 8a2bf07dfa6171f4aacd013f49af646e, type: 3}
+  destroyEffet: {fileID: 3487145005171164033, guid: d6b78c7ad6acf804e8c81016e1aac1eb, type: 3}
   currentPiece: {fileID: 0}
   basePieceValue: 20
   scoreGoals: 90010000f401000058020000
@@ -185,6 +187,21 @@ Transform:
   - {fileID: 403283907}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &24624385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24624382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8908a42f42f284468a9eb0afea56f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintDelay: 3
+  hintParticle: {fileID: 557355985457690637, guid: 04c9e8ce6b1f2de4c883b6da86f4f4d8, type: 3}
+  currentHint: {fileID: 0}
 --- !u!1 &29081188
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.75, b: 0.75, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
