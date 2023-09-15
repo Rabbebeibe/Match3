@@ -20,9 +20,14 @@ public class Board : MonoBehaviour
     public GameObject[] dots;
     public GameObject[,] allDots;
     public Piece currentPiece;
+    public int basePieceValue = 20;
+    private int streakValue = 1;
+    private ScoreManager scoreManager;
+    public int[] scoreGoals;
 
     void Start()
     {
+        scoreManager = FindObjectOfType<ScoreManager>();
         findMatches = FindObjectOfType<FindMatches>();
         allTiles = new BackGround[widht, height];
         allDots = new GameObject[widht, height];
@@ -191,6 +196,7 @@ public class Board : MonoBehaviour
                 CheckToMakebombs();
             }
             Destroy(allDots[column, row]);
+            scoreManager.IncreaseScore(basePieceValue * streakValue);
             allDots[column, row] = null;
         }
     }
@@ -276,12 +282,138 @@ public class Board : MonoBehaviour
 
         while(MatchesOnBoard())
         {
+            streakValue ++;
             yield return new WaitForSeconds(.5f);
             DestroyMatches();
         }
         findMatches.currentMatches.Clear();
         currentPiece = null;
         yield return new WaitForSeconds(.5f);
+
+        if(IsDeadLocked())
+        {
+            ShuffleBoard();
+            Debug.Log("DEAD");
+        }
         currentState = GameState.move;
+        streakValue = 1;
+    }
+
+    private void SwitchPieces( int column, int row, Vector2 direction)
+    {
+        GameObject holder = allDots[column + (int)direction.x, row + (int)direction.y] as GameObject;
+        allDots[column + (int)direction.x, row + (int)direction.y] = allDots[column, row];
+        allDots[column, row] = holder;
+    }
+
+    private bool CheckForMatches()
+    {
+        for(int i = 0; i < widht; i++)
+        {
+            for(int j = 0; j< height; j++)
+            { 
+                if(allDots[i,j]!=null)
+                {
+                    if (i < widht - 2)
+                    {
+                        if (allDots[i + 1, j] != null && allDots[i + 2, j] != null)
+                        {
+                            if (allDots[i + 1, j].tag == allDots[i, j].tag && allDots[i + 2, j].tag == allDots[i, j].tag)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    if (j < height - 2)
+                    {
+                        if (allDots[i, j + 1] != null && allDots[i, j + 2] != null)
+                        {
+                            if (allDots[i, j + 1].tag == allDots[i, j].tag && allDots[i, j + 2].tag == allDots[i, j].tag)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    private bool SwitchAndCheck(int column, int row, Vector2 direction)
+    {
+        SwitchPieces(column, row, direction);
+        if(CheckForMatches())
+        {
+            SwitchPieces(column, row, direction);
+            return true;
+        }
+        SwitchPieces(column, row, direction);
+        return false;
+    }
+
+    private bool IsDeadLocked()
+    {
+        for(int i = 0; i < widht; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if (allDots[i,j] != null)
+                {
+                    if(i < widht -1)
+                    {
+                        if(SwitchAndCheck(i,j, Vector2.right))
+                        {
+                            return false;
+                        }
+                    }
+                    if (j < height -1)
+                    {
+                        if(SwitchAndCheck(i,j,Vector2.up))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    private void ShuffleBoard()
+    {
+        List<GameObject> newBoard = new List<GameObject>();
+        for (int i = 0; i < widht; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if (allDots[i, j] != null)
+                {
+                    newBoard.Add(allDots[i, j]);
+                }
+            }
+        }
+        for (int i = 0; i < widht; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                int pieceToUse = Random.Range(0, newBoard.Count);               
+                int maxIterations = 0;
+                while (MatchesAt(i, j, newBoard[pieceToUse]) && maxIterations < 100)
+                {
+                    pieceToUse = Random.Range(0, newBoard.Count);
+                    maxIterations++;
+                    Debug.Log(maxIterations);
+                }
+                Piece piece = newBoard[pieceToUse].GetComponent<Piece>();
+                maxIterations = 0;
+                piece.column = i;
+                piece.row = j;
+                allDots[i, j] = newBoard[pieceToUse];
+                newBoard.Remove(newBoard[pieceToUse]);
+            }
+        }
+        if (IsDeadLocked())
+        {
+            ShuffleBoard();
+        }
     }
 }
