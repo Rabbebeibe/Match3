@@ -28,13 +28,17 @@ public class Piece : MonoBehaviour
     public bool isColorBomb;
     public bool isColumnBomb;
     public bool isRowBomb;
+    public bool isAreaBomb;
     public GameObject rowArrow;
     public GameObject columnArrow;
     public GameObject colorBomb;
+    public GameObject areaBomb;
     void Start()
     {
         isColumnBomb = false;
         isRowBomb = false;
+        isColorBomb = false;
+        isAreaBomb = false;
 
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
@@ -50,9 +54,9 @@ public class Piece : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(1))
         {
-            isColorBomb = true;
-            GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
-            color.transform.parent = this.transform;
+            isAreaBomb = true;
+            GameObject marker = Instantiate(areaBomb, transform.position, Quaternion.identity);
+            marker.transform.parent = this.transform;
         }
     }
     void Update()
@@ -244,5 +248,17 @@ public class Piece : MonoBehaviour
         isColumnBomb = true;
         GameObject arrow = Instantiate(columnArrow, transform.position, Quaternion.identity);
         arrow.transform.parent = this.transform;
+    }
+    public void MakeColorBomb()
+    {
+        isColorBomb = true;
+        GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
+        color.transform.parent = this.transform;
+    }
+    public void MakeAreaBomb()
+    {
+        isAreaBomb = true;
+        GameObject area = Instantiate(areaBomb, transform.position, Quaternion.identity);
+        area.transform.parent = this.transform;
     }
 }

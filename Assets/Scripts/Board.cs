@@ -91,15 +91,105 @@ public class Board : MonoBehaviour
         }
         return false;
     }
+
+    private bool ColumnOrRow()
+    {
+        int numberHorizontal = 0;
+        int numbervertical = 0;
+        Piece firstPiece = findMatches.currentMatches[0].GetComponent<Piece>();
+        if (firstPiece != null)
+        {
+            foreach (GameObject currentPiece in findMatches.currentMatches)
+            {
+                Piece piece = currentPiece.GetComponent<Piece>();
+                if(piece.row == firstPiece.row)
+                {
+                    numberHorizontal++;
+                }
+                if(piece.column == firstPiece.column)
+                {
+                    numbervertical++;
+                }
+            }
+        }
+        return (numbervertical == 5 || numberHorizontal == 5);
+    }
+    private void CheckToMakebombs()
+    {
+        if(findMatches.currentMatches.Count == 4 || findMatches.currentMatches.Count == 7)
+        {
+            findMatches.CheckBombs();
+        }
+        if(findMatches.currentMatches.Count == 5 || findMatches.currentMatches.Count == 8)
+        {
+            if (ColumnOrRow()) // make a color bomb
+            {
+                if (currentPiece != null)
+                {
+                    if (currentPiece.isMatched)
+                    {
+                        if (!currentPiece.isColorBomb)
+                        {
+                            currentPiece.isMatched = false;
+                            currentPiece.MakeColorBomb();
+                        }
+                    }
+                    else
+                    {
+                        if (currentPiece.otherPiece != null)
+                        {
+                            Piece otherPiece = currentPiece.otherPiece.GetComponent<Piece>();
+                            if (otherPiece.isMatched)
+                            {
+                                if (!otherPiece.isColorBomb)
+                                {
+                                    otherPiece.isMatched = false;
+                                    otherPiece.MakeColorBomb();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else // area bomb
+            {
+                if (currentPiece != null)
+                {
+                    if (currentPiece.isMatched)
+                    {
+                        if (!currentPiece.isAreaBomb)
+                        {
+                            currentPiece.isMatched = false;
+                            currentPiece.MakeAreaBomb();
+                        }
+                    }
+                    else
+                    {
+                        if (currentPiece.otherPiece != null)
+                        {
+                            Piece otherPiece = currentPiece.otherPiece.GetComponent<Piece>();
+                            if (otherPiece.isMatched)
+                            {
+                                if (!otherPiece.isAreaBomb)
+                                {
+                                    otherPiece.isMatched = false;
+                                    otherPiece.MakeAreaBomb();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     private void DestroyMatchesAt(int column, int row)
     {
         if (allDots[column, row].GetComponent<Piece>().isMatched)
         {
-            if(findMatches.currentMatches.Count == 4 || findMatches.currentMatches.Count == 7)
+            if(findMatches.currentMatches.Count >= 4)
             {
-                findMatches.CheckBombs();
+                CheckToMakebombs();
             }
-            findMatches.currentMatches.Remove(allDots[column, row]);
             Destroy(allDots[column, row]);
             allDots[column, row] = null;
         }
@@ -117,6 +207,7 @@ public class Board : MonoBehaviour
                 }
             }
         }
+        findMatches.currentMatches.Clear();
         StartCoroutine(DecreaseRowCo());
     }
     private IEnumerator DecreaseRowCo()

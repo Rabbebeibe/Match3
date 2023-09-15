@@ -156,6 +156,8 @@ MonoBehaviour:
   isColorBomb: 0
   isColumnBomb: 0
   isRowBomb: 0
+  isAreaBomb: 0
   rowArrow: {fileID: 8556548278925498107, guid: cd4ec8937bb241544beb9f5fe8baa43c, type: 3}
   columnArrow: {fileID: 5697540315909743416, guid: 017852e99fc6f374ba5922504bb1b373, type: 3}
   colorBomb: {fileID: 5619229474267968653, guid: fb4c81c868c67e04b95af5fce2c9aece, type: 3}
+  areaBomb: {fileID: 3250611764664874443, guid: 710de69118f3cbc49a549838032e81aa, type: 3}
